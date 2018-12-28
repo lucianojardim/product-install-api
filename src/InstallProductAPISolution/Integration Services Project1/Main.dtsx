@@ -1,0 +1,2376 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="12/24/2018 7:02:10 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-1CVNQMN"
+  DTS:CreatorName="DESKTOP-1CVNQMN\lucia"
+  DTS:DTSID="{1EE94554-AB3D-4A78-9C53-28E904D32F4B}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.0900.40"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Main"
+  DTS:PackageType="5"
+  DTS:ProtectionLevel="2"
+  DTS:VersionBuild="16"
+  DTS:VersionGUID="{B4EAD8B0-2560-48B4-8CA6-1F3F86C0038D}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[ExcelAllsteel]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{3AB888C4-6482-431D-B3A6-54E0B9438214}"
+      DTS:ObjectName="ExcelAllsteel">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.16.0;Data Source=C:\Users\lucia\OneDrive\Documents\HNI\InstructionSheets\metadata\InstructionSheetsToBeLoaded-Allsteel.xlsx;Extended Properties=&quot;EXCEL 12.0 XML;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[ExcelHon]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{6258255C-EFEC-42AF-9945-BC1AF9B2491A}"
+      DTS:ObjectName="ExcelHon">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.16.0;Data Source=C:\Users\lucia\OneDrive\Documents\HNI\InstructionSheets\metadata\InstructionSheetsToBeLoaded-HON.xlsx;Extended Properties=&quot;EXCEL 12.0 XML;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[ExcelMaxon]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{242FCA41-5875-4765-80E6-419771EA6568}"
+      DTS:ObjectName="ExcelMaxon">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.16.0;Data Source=C:\Users\lucia\OneDrive\Documents\HNI\InstructionSheets\metadata\InstructionSheetsToBeLoaded-Maxon.xlsx;Extended Properties=&quot;EXCEL 12.0 XML;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[InstallProductStagingTable]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{AE709894-8D0E-4DEB-89D5-C6D8A10B2B3A}"
+      DTS:ObjectName="InstallProductStagingTable">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=lcjsqlserver.database.windows.net;User ID=lcjsqlserver;Initial Catalog=InstructionSheets;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;">
+          <EncryptedData
+            Type="http://www.w3.org/2001/04/xmlenc#Element"
+            Salt="2njMChe+Xg=="
+            IV="hDiY73NHaAg=" xmlns="http://www.w3.org/2001/04/xmlenc#">
+            <EncryptionMethod
+              Algorithm="http://www.w3.org/2001/04/xmlenc#tripledes-cbc" />
+            <CipherData>
+              <CipherValue>hDiY73NHaAgEXONqlco3S00tBVzDBBsN7AgPRwCexplfkpdXbMvDueAw2Au+tDwtTLDK+2C2CkYOUVYFzU/iuDeyt8DtVA+vFnEm6ZtKD/prZRImh3+FNluo6AQfZ6Ee6ZDblOgi5BnQmP7DDG+vZsdXaq/5KTx1ogZd94vSn8w=</CipherValue>
+            </CipherData>
+          </EncryptedData>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[SMTP Connection Manager]"
+      DTS:CreationName="SMTP"
+      DTS:DTSID="{97B307DC-738F-4EDF-87C6-71EE1C7141A6}"
+      DTS:ObjectName="SMTP Connection Manager">
+      <DTS:ObjectData>
+        <SmtpConnectionManager
+          ConnectionString="SmtpServer=smtp-relay.honi.com;UseWindowsAuthentication=False;EnableSsl=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\CreateStagingTable"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Create Staging Table if needed"
+      DTS:DTSID="{66D33943-A372-4D27-AF68-16795328C81D}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="CreateStagingTable"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:EventHandlers>
+        <DTS:EventHandler
+          DTS:refId="Package\CreateStagingTable.EventHandlers[OnError]"
+          DTS:CreationName="OnError"
+          DTS:DTSID="{96AA9051-B43C-4924-827D-103D83D1042A}"
+          DTS:EventID="0"
+          DTS:EventName="OnError"
+          DTS:LocaleID="-1">
+          <DTS:Variables>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:Description="The propagate property of the event"
+              DTS:DTSID="{6B2ABE51-6402-4E03-93E1-904F9F2509B9}"
+              DTS:IncludeInDebugDump="6789"
+              DTS:Namespace="System"
+              DTS:ObjectName="Propagate">
+              <DTS:VariableValue
+                DTS:DataType="11">-1</DTS:VariableValue>
+            </DTS:Variable>
+          </DTS:Variables>
+          <DTS:Executables>
+            <DTS:Executable
+              DTS:refId="Package\CreateStagingTable.EventHandlers[OnError]\Send Mail Task"
+              DTS:CreationName="Microsoft.SendMailTask"
+              DTS:Description="Send Mail Task"
+              DTS:DTSID="{0C8996EC-9CEE-4B4E-96A2-F091903A99BD}"
+              DTS:ExecutableType="Microsoft.SendMailTask"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="Send Mail Task">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <SendMailTask:SendMailTaskData
+                  SendMailTask:SMTPServer="{97B307DC-738F-4EDF-87C6-71EE1C7141A6}"
+                  SendMailTask:From="LoadIntallProductStaging@hnicorp.com"
+                  SendMailTask:To="jardml@hnicorp.com"
+                  SendMailTask:Subject="Fail to Create Install Product Staging table"
+                  SendMailTask:MessageSource="Fail to Create Install Product Staging table" xmlns:SendMailTask="www.microsoft.com/sqlserver/dts/tasks/sendmailtask" />
+              </DTS:ObjectData>
+            </DTS:Executable>
+          </DTS:Executables>
+        </DTS:EventHandler>
+      </DTS:EventHandlers>
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{AE709894-8D0E-4DEB-89D5-C6D8A10B2B3A}"
+          SQLTask:SqlStatementSource="IF NOT EXISTS (SELECT 'X' FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'dbo'AND TABLE_NAME = 'InstructionSheetsToBeLoaded')&#xA;&#x9;CREATE TABLE [dbo].[InstructionSheetsToBeLoaded](&#xA;&#x9;&#x9;[BrandName] [nvarchar](255) NULL,&#xA;&#x9;&#x9;[ProductSeriesName] [nvarchar](255) NULL,&#xA;&#x9;&#x9;[ProductTypeName] [nvarchar](255) NULL,&#xA;&#x9;&#x9;[BaseModelName] [nvarchar](255) NULL,&#xA;&#x9;&#x9;[InstructionSheetContainerName] [nvarchar](255) NULL,&#xA;&#x9;&#x9;[InstructionSheetRevisionStatus] [nvarchar](255) NULL,&#xA;&#x9;&#x9;[InstructionSheetBookmark] [nvarchar](255) NULL,&#xA;&#x9;&#x9;[InstructionSheetContainerType] [nvarchar](255) NULL,&#xA;&#x9;&#x9;[InstructionSheetFileType] [nvarchar](255) NULL,&#xA;&#x9;&#x9;[InstructionSheetName] [nvarchar](255) NULL,&#xA;&#x9;&#x9;[InstructionSheetDocumentType] [nvarchar](255) NULL&#xA;&#x9;)&#xA;TRUNCATE TABLE .[InstructionSheetsToBeLoaded]&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\LoadAllsteel"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:DelayValidation="True"
+      DTS:DTSID="{93346dd8-99f6-4f94-8245-3a28a1c2fd62}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:FailPackageOnFailure="True"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="LoadAllsteel"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:EventHandlers>
+        <DTS:EventHandler
+          DTS:refId="Package\LoadAllsteel.EventHandlers[OnError]"
+          DTS:CreationName="OnError"
+          DTS:DTSID="{4E351306-0D64-44D6-AEEB-5B700A7CF5A8}"
+          DTS:EventID="0"
+          DTS:EventName="OnError"
+          DTS:LocaleID="-1">
+          <DTS:Variables>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:Description="The propagate property of the event"
+              DTS:DTSID="{CD75F7D6-8E6D-43E7-9476-2C6298D5DAC9}"
+              DTS:IncludeInDebugDump="6789"
+              DTS:Namespace="System"
+              DTS:ObjectName="Propagate">
+              <DTS:VariableValue
+                DTS:DataType="11">-1</DTS:VariableValue>
+            </DTS:Variable>
+          </DTS:Variables>
+          <DTS:Executables>
+            <DTS:Executable
+              DTS:refId="Package\LoadAllsteel.EventHandlers[OnError]\Send Mail Task"
+              DTS:CreationName="Microsoft.SendMailTask"
+              DTS:Description="Send Mail Task"
+              DTS:DTSID="{89744b69-0b83-4896-a6db-0d860ab49969}"
+              DTS:ExecutableType="Microsoft.SendMailTask"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="Send Mail Task">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <SendMailTask:SendMailTaskData
+                  SendMailTask:SMTPServer="{97B307DC-738F-4EDF-87C6-71EE1C7141A6}"
+                  SendMailTask:From="LoadIntallProductStaging@hnicorp.com"
+                  SendMailTask:To="jardml@hnicorp.com"
+                  SendMailTask:Subject="Fail to Load Allsteel data"
+                  SendMailTask:MessageSource="Fail to Load Allsteel data" xmlns:SendMailTask="www.microsoft.com/sqlserver/dts/tasks/sendmailtask" />
+              </DTS:ObjectData>
+            </DTS:Executable>
+          </DTS:Executables>
+        </DTS:EventHandler>
+      </DTS:EventHandlers>
+      <DTS:ObjectData>
+        <pipeline
+          defaultBufferSize="3145728"
+          version="1">
+          <components>
+            <component
+              refId="Package\LoadAllsteel\Destination - InstructionSheetsToBeLoaded-Allsteel"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Destination - InstructionSheetsToBeLoaded-Allsteel"
+              usesDispositions="true"
+              validateExternalMetadata="False"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[InstructionSheetsToBeLoaded]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\LoadAllsteel\Destination - InstructionSheetsToBeLoaded-Allsteel.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[InstallProductStagingTable]"
+                  connectionManagerRefId="Package.ConnectionManagers[InstallProductStagingTable]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\LoadAllsteel\Destination - InstructionSheetsToBeLoaded-Allsteel.Inputs[Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\LoadAllsteel\Destination - InstructionSheetsToBeLoaded-Allsteel.Inputs[Destination Input].Columns[BrandName]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="BrandName"
+                      externalMetadataColumnId="Package\LoadAllsteel\Destination - InstructionSheetsToBeLoaded-Allsteel.Inputs[Destination Input].ExternalColumns[BrandName]"
+                      lineageId="Package\LoadAllsteel\Source - Sheet1$.Outputs[Excel Source Output].Columns[BrandName]" />
+                    <inputColumn
+                      refId="Package\LoadAllsteel\Destination - InstructionSheetsToBeLoaded-Allsteel.Inputs[Destination Input].Columns[ProductSeriesName]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="ProductSeriesName"
+                      externalMetadataColumnId="Package\LoadAllsteel\Destination - InstructionSheetsToBeLoaded-Allsteel.Inputs[Destination Input].ExternalColumns[ProductSeriesName]"
+                      lineageId="Package\LoadAllsteel\Source - Sheet1$.Outputs[Excel Source Output].Columns[ProductSeriesName]" />
+                    <inputColumn
+                      refId="Package\LoadAllsteel\Destination - InstructionSheetsToBeLoaded-Allsteel.Inputs[Destination Input].Columns[ProductTypeName]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="ProductTypeName"
+                      externalMetadataColumnId="Package\LoadAllsteel\Destination - InstructionSheetsToBeLoaded-Allsteel.Inputs[Destination Input].ExternalColumns[ProductTypeName]"
+                      lineageId="Package\LoadAllsteel\Source - Sheet1$.Outputs[Excel Source Output].Columns[ProductTypeName]" />
+                    <inputColumn
+                      refId="Package\LoadAllsteel\Destination - InstructionSheetsToBeLoaded-Allsteel.Inputs[Destination Input].Columns[BaseModelName]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="BaseModelName"
+                      externalMetadataColumnId="Package\LoadAllsteel\Destination - InstructionSheetsToBeLoaded-Allsteel.Inputs[Destination Input].ExternalColumns[BaseModelName]"
+                      lineageId="Package\LoadAllsteel\Source - Sheet1$.Outputs[Excel Source Output].Columns[BaseModelName]" />
+                    <inputColumn
+                      refId="Package\LoadAllsteel\Destination - InstructionSheetsToBeLoaded-Allsteel.Inputs[Destination Input].Columns[InstructionSheetContainerName]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="InstructionSheetContainerName"
+                      externalMetadataColumnId="Package\LoadAllsteel\Destination - InstructionSheetsToBeLoaded-Allsteel.Inputs[Destination Input].ExternalColumns[InstructionSheetContainerName]"
+                      lineageId="Package\LoadAllsteel\Source - Sheet1$.Outputs[Excel Source Output].Columns[InstructionSheetContainerName]" />
+                    <inputColumn
+                      refId="Package\LoadAllsteel\Destination - InstructionSheetsToBeLoaded-Allsteel.Inputs[Destination Input].Columns[InstructionSheetRevisionStatus]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="InstructionSheetRevisionStatus"
+                      externalMetadataColumnId="Package\LoadAllsteel\Destination - InstructionSheetsToBeLoaded-Allsteel.Inputs[Destination Input].ExternalColumns[InstructionSheetRevisionStatus]"
+                      lineageId="Package\LoadAllsteel\Source - Sheet1$.Outputs[Excel Source Output].Columns[InstructionSheetRevisionStatus]" />
+                    <inputColumn
+                      refId="Package\LoadAllsteel\Destination - InstructionSheetsToBeLoaded-Allsteel.Inputs[Destination Input].Columns[InstructionSheetBookMark]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="InstructionSheetBookMark"
+                      externalMetadataColumnId="Package\LoadAllsteel\Destination - InstructionSheetsToBeLoaded-Allsteel.Inputs[Destination Input].ExternalColumns[InstructionSheetBookmark]"
+                      lineageId="Package\LoadAllsteel\Source - Sheet1$.Outputs[Excel Source Output].Columns[InstructionSheetBookMark]" />
+                    <inputColumn
+                      refId="Package\LoadAllsteel\Destination - InstructionSheetsToBeLoaded-Allsteel.Inputs[Destination Input].Columns[InstructionSheetContainerType]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="InstructionSheetContainerType"
+                      externalMetadataColumnId="Package\LoadAllsteel\Destination - InstructionSheetsToBeLoaded-Allsteel.Inputs[Destination Input].ExternalColumns[InstructionSheetContainerType]"
+                      lineageId="Package\LoadAllsteel\Source - Sheet1$.Outputs[Excel Source Output].Columns[InstructionSheetContainerType]" />
+                    <inputColumn
+                      refId="Package\LoadAllsteel\Destination - InstructionSheetsToBeLoaded-Allsteel.Inputs[Destination Input].Columns[InstructionSheetFileType]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="InstructionSheetFileType"
+                      externalMetadataColumnId="Package\LoadAllsteel\Destination - InstructionSheetsToBeLoaded-Allsteel.Inputs[Destination Input].ExternalColumns[InstructionSheetFileType]"
+                      lineageId="Package\LoadAllsteel\Source - Sheet1$.Outputs[Excel Source Output].Columns[InstructionSheetFileType]" />
+                    <inputColumn
+                      refId="Package\LoadAllsteel\Destination - InstructionSheetsToBeLoaded-Allsteel.Inputs[Destination Input].Columns[InstructionSheetName]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="InstructionSheetName"
+                      externalMetadataColumnId="Package\LoadAllsteel\Destination - InstructionSheetsToBeLoaded-Allsteel.Inputs[Destination Input].ExternalColumns[InstructionSheetName]"
+                      lineageId="Package\LoadAllsteel\Source - Sheet1$.Outputs[Excel Source Output].Columns[InstructionSheetName]" />
+                    <inputColumn
+                      refId="Package\LoadAllsteel\Destination - InstructionSheetsToBeLoaded-Allsteel.Inputs[Destination Input].Columns[InstructionSheetDocumentType]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="InstructionSheetDocumentType"
+                      externalMetadataColumnId="Package\LoadAllsteel\Destination - InstructionSheetsToBeLoaded-Allsteel.Inputs[Destination Input].ExternalColumns[InstructionSheetDocumentType]"
+                      lineageId="Package\LoadAllsteel\Source - Sheet1$.Outputs[Excel Source Output].Columns[InstructionSheetDocumentType]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\LoadAllsteel\Destination - InstructionSheetsToBeLoaded-Allsteel.Inputs[Destination Input].ExternalColumns[BrandName]"
+                      dataType="wstr"
+                      length="255"
+                      name="BrandName" />
+                    <externalMetadataColumn
+                      refId="Package\LoadAllsteel\Destination - InstructionSheetsToBeLoaded-Allsteel.Inputs[Destination Input].ExternalColumns[ProductSeriesName]"
+                      dataType="wstr"
+                      length="255"
+                      name="ProductSeriesName" />
+                    <externalMetadataColumn
+                      refId="Package\LoadAllsteel\Destination - InstructionSheetsToBeLoaded-Allsteel.Inputs[Destination Input].ExternalColumns[ProductTypeName]"
+                      dataType="wstr"
+                      length="255"
+                      name="ProductTypeName" />
+                    <externalMetadataColumn
+                      refId="Package\LoadAllsteel\Destination - InstructionSheetsToBeLoaded-Allsteel.Inputs[Destination Input].ExternalColumns[BaseModelName]"
+                      dataType="wstr"
+                      length="255"
+                      name="BaseModelName" />
+                    <externalMetadataColumn
+                      refId="Package\LoadAllsteel\Destination - InstructionSheetsToBeLoaded-Allsteel.Inputs[Destination Input].ExternalColumns[InstructionSheetContainerName]"
+                      dataType="wstr"
+                      length="255"
+                      name="InstructionSheetContainerName" />
+                    <externalMetadataColumn
+                      refId="Package\LoadAllsteel\Destination - InstructionSheetsToBeLoaded-Allsteel.Inputs[Destination Input].ExternalColumns[InstructionSheetRevisionStatus]"
+                      dataType="wstr"
+                      length="255"
+                      name="InstructionSheetRevisionStatus" />
+                    <externalMetadataColumn
+                      refId="Package\LoadAllsteel\Destination - InstructionSheetsToBeLoaded-Allsteel.Inputs[Destination Input].ExternalColumns[InstructionSheetBookmark]"
+                      dataType="wstr"
+                      length="255"
+                      name="InstructionSheetBookmark" />
+                    <externalMetadataColumn
+                      refId="Package\LoadAllsteel\Destination - InstructionSheetsToBeLoaded-Allsteel.Inputs[Destination Input].ExternalColumns[InstructionSheetContainerType]"
+                      dataType="wstr"
+                      length="255"
+                      name="InstructionSheetContainerType" />
+                    <externalMetadataColumn
+                      refId="Package\LoadAllsteel\Destination - InstructionSheetsToBeLoaded-Allsteel.Inputs[Destination Input].ExternalColumns[InstructionSheetFileType]"
+                      dataType="wstr"
+                      length="255"
+                      name="InstructionSheetFileType" />
+                    <externalMetadataColumn
+                      refId="Package\LoadAllsteel\Destination - InstructionSheetsToBeLoaded-Allsteel.Inputs[Destination Input].ExternalColumns[InstructionSheetName]"
+                      dataType="wstr"
+                      length="255"
+                      name="InstructionSheetName" />
+                    <externalMetadataColumn
+                      refId="Package\LoadAllsteel\Destination - InstructionSheetsToBeLoaded-Allsteel.Inputs[Destination Input].ExternalColumns[InstructionSheetDocumentType]"
+                      dataType="wstr"
+                      length="255"
+                      name="InstructionSheetDocumentType" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\LoadAllsteel\Destination - InstructionSheetsToBeLoaded-Allsteel.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\LoadAllsteel\Destination - InstructionSheetsToBeLoaded-Allsteel.Inputs[Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\LoadAllsteel\Destination - InstructionSheetsToBeLoaded-Allsteel.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\LoadAllsteel\Destination - InstructionSheetsToBeLoaded-Allsteel.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\LoadAllsteel\Destination - InstructionSheetsToBeLoaded-Allsteel.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\LoadAllsteel\Destination - InstructionSheetsToBeLoaded-Allsteel.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\LoadAllsteel\Source - Sheet1$"
+              componentClassID="Microsoft.ExcelSource"
+              contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Excel Source"
+              name="Source - Sheet1$"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">Sheet1$</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mapping from parameters in the SQL command to variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\LoadAllsteel\Source - Sheet1$.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[ExcelAllsteel]"
+                  connectionManagerRefId="Package.ConnectionManagers[ExcelAllsteel]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\LoadAllsteel\Source - Sheet1$.Outputs[Excel Source Output]"
+                  name="Excel Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\LoadAllsteel\Source - Sheet1$.Outputs[Excel Source Output].Columns[BrandName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\LoadAllsteel\Source - Sheet1$.Outputs[Excel Source Output].ExternalColumns[BrandName]"
+                      length="255"
+                      lineageId="Package\LoadAllsteel\Source - Sheet1$.Outputs[Excel Source Output].Columns[BrandName]"
+                      name="BrandName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\LoadAllsteel\Source - Sheet1$.Outputs[Excel Source Output].Columns[ProductSeriesName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\LoadAllsteel\Source - Sheet1$.Outputs[Excel Source Output].ExternalColumns[ProductSeriesName]"
+                      length="255"
+                      lineageId="Package\LoadAllsteel\Source - Sheet1$.Outputs[Excel Source Output].Columns[ProductSeriesName]"
+                      name="ProductSeriesName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\LoadAllsteel\Source - Sheet1$.Outputs[Excel Source Output].Columns[ProductTypeName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\LoadAllsteel\Source - Sheet1$.Outputs[Excel Source Output].ExternalColumns[ProductTypeName]"
+                      length="255"
+                      lineageId="Package\LoadAllsteel\Source - Sheet1$.Outputs[Excel Source Output].Columns[ProductTypeName]"
+                      name="ProductTypeName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\LoadAllsteel\Source - Sheet1$.Outputs[Excel Source Output].Columns[BaseModelName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\LoadAllsteel\Source - Sheet1$.Outputs[Excel Source Output].ExternalColumns[BaseModelName]"
+                      length="255"
+                      lineageId="Package\LoadAllsteel\Source - Sheet1$.Outputs[Excel Source Output].Columns[BaseModelName]"
+                      name="BaseModelName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\LoadAllsteel\Source - Sheet1$.Outputs[Excel Source Output].Columns[InstructionSheetContainerName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\LoadAllsteel\Source - Sheet1$.Outputs[Excel Source Output].ExternalColumns[InstructionSheetContainerName]"
+                      length="255"
+                      lineageId="Package\LoadAllsteel\Source - Sheet1$.Outputs[Excel Source Output].Columns[InstructionSheetContainerName]"
+                      name="InstructionSheetContainerName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\LoadAllsteel\Source - Sheet1$.Outputs[Excel Source Output].Columns[InstructionSheetRevisionStatus]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\LoadAllsteel\Source - Sheet1$.Outputs[Excel Source Output].ExternalColumns[InstructionSheetRevisionStatus]"
+                      length="255"
+                      lineageId="Package\LoadAllsteel\Source - Sheet1$.Outputs[Excel Source Output].Columns[InstructionSheetRevisionStatus]"
+                      name="InstructionSheetRevisionStatus"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\LoadAllsteel\Source - Sheet1$.Outputs[Excel Source Output].Columns[InstructionSheetContainerType]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\LoadAllsteel\Source - Sheet1$.Outputs[Excel Source Output].ExternalColumns[InstructionSheetContainerType]"
+                      length="255"
+                      lineageId="Package\LoadAllsteel\Source - Sheet1$.Outputs[Excel Source Output].Columns[InstructionSheetContainerType]"
+                      name="InstructionSheetContainerType"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\LoadAllsteel\Source - Sheet1$.Outputs[Excel Source Output].Columns[InstructionSheetFileType]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\LoadAllsteel\Source - Sheet1$.Outputs[Excel Source Output].ExternalColumns[InstructionSheetFileType]"
+                      length="255"
+                      lineageId="Package\LoadAllsteel\Source - Sheet1$.Outputs[Excel Source Output].Columns[InstructionSheetFileType]"
+                      name="InstructionSheetFileType"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\LoadAllsteel\Source - Sheet1$.Outputs[Excel Source Output].Columns[InstructionSheetName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\LoadAllsteel\Source - Sheet1$.Outputs[Excel Source Output].ExternalColumns[InstructionSheetName]"
+                      length="255"
+                      lineageId="Package\LoadAllsteel\Source - Sheet1$.Outputs[Excel Source Output].Columns[InstructionSheetName]"
+                      name="InstructionSheetName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\LoadAllsteel\Source - Sheet1$.Outputs[Excel Source Output].Columns[InstructionSheetDocumentType]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\LoadAllsteel\Source - Sheet1$.Outputs[Excel Source Output].ExternalColumns[InstructionSheetDocumentType]"
+                      length="255"
+                      lineageId="Package\LoadAllsteel\Source - Sheet1$.Outputs[Excel Source Output].Columns[InstructionSheetDocumentType]"
+                      name="InstructionSheetDocumentType"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\LoadAllsteel\Source - Sheet1$.Outputs[Excel Source Output].Columns[InstructionSheetBookMark]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\LoadAllsteel\Source - Sheet1$.Outputs[Excel Source Output].ExternalColumns[InstructionSheetBookMark]"
+                      length="255"
+                      lineageId="Package\LoadAllsteel\Source - Sheet1$.Outputs[Excel Source Output].Columns[InstructionSheetBookMark]"
+                      name="InstructionSheetBookMark"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\LoadAllsteel\Source - Sheet1$.Outputs[Excel Source Output].ExternalColumns[BrandName]"
+                      dataType="wstr"
+                      length="255"
+                      name="BrandName" />
+                    <externalMetadataColumn
+                      refId="Package\LoadAllsteel\Source - Sheet1$.Outputs[Excel Source Output].ExternalColumns[ProductSeriesName]"
+                      dataType="wstr"
+                      length="255"
+                      name="ProductSeriesName" />
+                    <externalMetadataColumn
+                      refId="Package\LoadAllsteel\Source - Sheet1$.Outputs[Excel Source Output].ExternalColumns[ProductTypeName]"
+                      dataType="wstr"
+                      length="255"
+                      name="ProductTypeName" />
+                    <externalMetadataColumn
+                      refId="Package\LoadAllsteel\Source - Sheet1$.Outputs[Excel Source Output].ExternalColumns[BaseModelName]"
+                      dataType="wstr"
+                      length="255"
+                      name="BaseModelName" />
+                    <externalMetadataColumn
+                      refId="Package\LoadAllsteel\Source - Sheet1$.Outputs[Excel Source Output].ExternalColumns[InstructionSheetContainerName]"
+                      dataType="wstr"
+                      length="255"
+                      name="InstructionSheetContainerName" />
+                    <externalMetadataColumn
+                      refId="Package\LoadAllsteel\Source - Sheet1$.Outputs[Excel Source Output].ExternalColumns[InstructionSheetRevisionStatus]"
+                      dataType="wstr"
+                      length="255"
+                      name="InstructionSheetRevisionStatus" />
+                    <externalMetadataColumn
+                      refId="Package\LoadAllsteel\Source - Sheet1$.Outputs[Excel Source Output].ExternalColumns[InstructionSheetContainerType]"
+                      dataType="wstr"
+                      length="255"
+                      name="InstructionSheetContainerType" />
+                    <externalMetadataColumn
+                      refId="Package\LoadAllsteel\Source - Sheet1$.Outputs[Excel Source Output].ExternalColumns[InstructionSheetFileType]"
+                      dataType="wstr"
+                      length="255"
+                      name="InstructionSheetFileType" />
+                    <externalMetadataColumn
+                      refId="Package\LoadAllsteel\Source - Sheet1$.Outputs[Excel Source Output].ExternalColumns[InstructionSheetName]"
+                      dataType="wstr"
+                      length="255"
+                      name="InstructionSheetName" />
+                    <externalMetadataColumn
+                      refId="Package\LoadAllsteel\Source - Sheet1$.Outputs[Excel Source Output].ExternalColumns[InstructionSheetDocumentType]"
+                      dataType="wstr"
+                      length="255"
+                      name="InstructionSheetDocumentType" />
+                    <externalMetadataColumn
+                      refId="Package\LoadAllsteel\Source - Sheet1$.Outputs[Excel Source Output].ExternalColumns[InstructionSheetBookMark]"
+                      dataType="wstr"
+                      length="255"
+                      name="InstructionSheetBookMark" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\LoadAllsteel\Source - Sheet1$.Outputs[Excel Source Error Output]"
+                  isErrorOut="true"
+                  name="Excel Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\LoadAllsteel\Source - Sheet1$.Outputs[Excel Source Error Output].Columns[BrandName]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\LoadAllsteel\Source - Sheet1$.Outputs[Excel Source Error Output].Columns[BrandName]"
+                      name="BrandName" />
+                    <outputColumn
+                      refId="Package\LoadAllsteel\Source - Sheet1$.Outputs[Excel Source Error Output].Columns[ProductSeriesName]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\LoadAllsteel\Source - Sheet1$.Outputs[Excel Source Error Output].Columns[ProductSeriesName]"
+                      name="ProductSeriesName" />
+                    <outputColumn
+                      refId="Package\LoadAllsteel\Source - Sheet1$.Outputs[Excel Source Error Output].Columns[ProductTypeName]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\LoadAllsteel\Source - Sheet1$.Outputs[Excel Source Error Output].Columns[ProductTypeName]"
+                      name="ProductTypeName" />
+                    <outputColumn
+                      refId="Package\LoadAllsteel\Source - Sheet1$.Outputs[Excel Source Error Output].Columns[BaseModelName]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\LoadAllsteel\Source - Sheet1$.Outputs[Excel Source Error Output].Columns[BaseModelName]"
+                      name="BaseModelName" />
+                    <outputColumn
+                      refId="Package\LoadAllsteel\Source - Sheet1$.Outputs[Excel Source Error Output].Columns[InstructionSheetContainerName]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\LoadAllsteel\Source - Sheet1$.Outputs[Excel Source Error Output].Columns[InstructionSheetContainerName]"
+                      name="InstructionSheetContainerName" />
+                    <outputColumn
+                      refId="Package\LoadAllsteel\Source - Sheet1$.Outputs[Excel Source Error Output].Columns[InstructionSheetRevisionStatus]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\LoadAllsteel\Source - Sheet1$.Outputs[Excel Source Error Output].Columns[InstructionSheetRevisionStatus]"
+                      name="InstructionSheetRevisionStatus" />
+                    <outputColumn
+                      refId="Package\LoadAllsteel\Source - Sheet1$.Outputs[Excel Source Error Output].Columns[InstructionSheetBookMark]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\LoadAllsteel\Source - Sheet1$.Outputs[Excel Source Error Output].Columns[InstructionSheetBookMark]"
+                      name="InstructionSheetBookMark" />
+                    <outputColumn
+                      refId="Package\LoadAllsteel\Source - Sheet1$.Outputs[Excel Source Error Output].Columns[InstructionSheetContainerType]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\LoadAllsteel\Source - Sheet1$.Outputs[Excel Source Error Output].Columns[InstructionSheetContainerType]"
+                      name="InstructionSheetContainerType" />
+                    <outputColumn
+                      refId="Package\LoadAllsteel\Source - Sheet1$.Outputs[Excel Source Error Output].Columns[InstructionSheetFileType]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\LoadAllsteel\Source - Sheet1$.Outputs[Excel Source Error Output].Columns[InstructionSheetFileType]"
+                      name="InstructionSheetFileType" />
+                    <outputColumn
+                      refId="Package\LoadAllsteel\Source - Sheet1$.Outputs[Excel Source Error Output].Columns[InstructionSheetName]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\LoadAllsteel\Source - Sheet1$.Outputs[Excel Source Error Output].Columns[InstructionSheetName]"
+                      name="InstructionSheetName" />
+                    <outputColumn
+                      refId="Package\LoadAllsteel\Source - Sheet1$.Outputs[Excel Source Error Output].Columns[InstructionSheetDocumentType]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\LoadAllsteel\Source - Sheet1$.Outputs[Excel Source Error Output].Columns[InstructionSheetDocumentType]"
+                      name="InstructionSheetDocumentType" />
+                    <outputColumn
+                      refId="Package\LoadAllsteel\Source - Sheet1$.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\LoadAllsteel\Source - Sheet1$.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\LoadAllsteel\Source - Sheet1$.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\LoadAllsteel\Source - Sheet1$.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\LoadAllsteel.Paths[Excel Source Output]"
+              endId="Package\LoadAllsteel\Destination - InstructionSheetsToBeLoaded-Allsteel.Inputs[Destination Input]"
+              name="Excel Source Output"
+              startId="Package\LoadAllsteel\Source - Sheet1$.Outputs[Excel Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\LoadHON"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:DelayValidation="True"
+      DTS:DTSID="{41695aeb-1b29-4e02-8a8d-c262041fae0d}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:FailPackageOnFailure="True"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="LoadHON"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:EventHandlers>
+        <DTS:EventHandler
+          DTS:refId="Package\LoadHON.EventHandlers[OnError]"
+          DTS:CreationName="OnError"
+          DTS:DTSID="{A0B9D9C7-56BA-413E-884A-74A6C1D78F14}"
+          DTS:EventID="0"
+          DTS:EventName="OnError"
+          DTS:LocaleID="-1">
+          <DTS:Variables>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:Description="The propagate property of the event"
+              DTS:DTSID="{39C74B88-343E-4CA4-8ED9-E72016B307DC}"
+              DTS:IncludeInDebugDump="6789"
+              DTS:Namespace="System"
+              DTS:ObjectName="Propagate">
+              <DTS:VariableValue
+                DTS:DataType="11">-1</DTS:VariableValue>
+            </DTS:Variable>
+          </DTS:Variables>
+          <DTS:Executables>
+            <DTS:Executable
+              DTS:refId="Package\LoadHON.EventHandlers[OnError]\Send Mail Task"
+              DTS:CreationName="Microsoft.SendMailTask"
+              DTS:Description="Send Mail Task"
+              DTS:DTSID="{24a53b0a-6547-4460-a799-7a4c55b961bc}"
+              DTS:ExecutableType="Microsoft.SendMailTask"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="Send Mail Task">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <SendMailTask:SendMailTaskData
+                  SendMailTask:SMTPServer="{97B307DC-738F-4EDF-87C6-71EE1C7141A6}"
+                  SendMailTask:From="LoadIntallProductStaging@hnicorp.com"
+                  SendMailTask:To="jardml@hnicorp.com"
+                  SendMailTask:Subject="Fail to Load HON data"
+                  SendMailTask:MessageSource="Fail to Load HON data" xmlns:SendMailTask="www.microsoft.com/sqlserver/dts/tasks/sendmailtask" />
+              </DTS:ObjectData>
+            </DTS:Executable>
+          </DTS:Executables>
+        </DTS:EventHandler>
+      </DTS:EventHandlers>
+      <DTS:ObjectData>
+        <pipeline
+          defaultBufferSize="3145728"
+          version="1">
+          <components>
+            <component
+              refId="Package\LoadHON\Destination - InstructionSheetsToBeLoaded-HON"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Destination - InstructionSheetsToBeLoaded-HON"
+              usesDispositions="true"
+              validateExternalMetadata="False"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[InstructionSheetsToBeLoaded]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\LoadHON\Destination - InstructionSheetsToBeLoaded-HON.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[InstallProductStagingTable]"
+                  connectionManagerRefId="Package.ConnectionManagers[InstallProductStagingTable]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\LoadHON\Destination - InstructionSheetsToBeLoaded-HON.Inputs[Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\LoadHON\Destination - InstructionSheetsToBeLoaded-HON.Inputs[Destination Input].Columns[BrandName]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="BrandName"
+                      externalMetadataColumnId="Package\LoadHON\Destination - InstructionSheetsToBeLoaded-HON.Inputs[Destination Input].ExternalColumns[BrandName]"
+                      lineageId="Package\LoadHON\Source - Sheet1$.Outputs[Excel Source Output].Columns[BrandName]" />
+                    <inputColumn
+                      refId="Package\LoadHON\Destination - InstructionSheetsToBeLoaded-HON.Inputs[Destination Input].Columns[ProductSeriesName]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="ProductSeriesName"
+                      externalMetadataColumnId="Package\LoadHON\Destination - InstructionSheetsToBeLoaded-HON.Inputs[Destination Input].ExternalColumns[ProductSeriesName]"
+                      lineageId="Package\LoadHON\Source - Sheet1$.Outputs[Excel Source Output].Columns[ProductSeriesName]" />
+                    <inputColumn
+                      refId="Package\LoadHON\Destination - InstructionSheetsToBeLoaded-HON.Inputs[Destination Input].Columns[ProductTypeName]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="ProductTypeName"
+                      externalMetadataColumnId="Package\LoadHON\Destination - InstructionSheetsToBeLoaded-HON.Inputs[Destination Input].ExternalColumns[ProductTypeName]"
+                      lineageId="Package\LoadHON\Source - Sheet1$.Outputs[Excel Source Output].Columns[ProductTypeName]" />
+                    <inputColumn
+                      refId="Package\LoadHON\Destination - InstructionSheetsToBeLoaded-HON.Inputs[Destination Input].Columns[BaseModelName]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="BaseModelName"
+                      externalMetadataColumnId="Package\LoadHON\Destination - InstructionSheetsToBeLoaded-HON.Inputs[Destination Input].ExternalColumns[BaseModelName]"
+                      lineageId="Package\LoadHON\Source - Sheet1$.Outputs[Excel Source Output].Columns[BaseModelName]" />
+                    <inputColumn
+                      refId="Package\LoadHON\Destination - InstructionSheetsToBeLoaded-HON.Inputs[Destination Input].Columns[InstructionSheetContainerName]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="InstructionSheetContainerName"
+                      externalMetadataColumnId="Package\LoadHON\Destination - InstructionSheetsToBeLoaded-HON.Inputs[Destination Input].ExternalColumns[InstructionSheetContainerName]"
+                      lineageId="Package\LoadHON\Source - Sheet1$.Outputs[Excel Source Output].Columns[InstructionSheetContainerName]" />
+                    <inputColumn
+                      refId="Package\LoadHON\Destination - InstructionSheetsToBeLoaded-HON.Inputs[Destination Input].Columns[InstructionSheetRevisionStatus]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="InstructionSheetRevisionStatus"
+                      externalMetadataColumnId="Package\LoadHON\Destination - InstructionSheetsToBeLoaded-HON.Inputs[Destination Input].ExternalColumns[InstructionSheetRevisionStatus]"
+                      lineageId="Package\LoadHON\Source - Sheet1$.Outputs[Excel Source Output].Columns[InstructionSheetRevisionStatus]" />
+                    <inputColumn
+                      refId="Package\LoadHON\Destination - InstructionSheetsToBeLoaded-HON.Inputs[Destination Input].Columns[InstructionSheetBookmark]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="InstructionSheetBookmark"
+                      externalMetadataColumnId="Package\LoadHON\Destination - InstructionSheetsToBeLoaded-HON.Inputs[Destination Input].ExternalColumns[InstructionSheetBookmark]"
+                      lineageId="Package\LoadHON\Source - Sheet1$.Outputs[Excel Source Output].Columns[InstructionSheetBookmark]" />
+                    <inputColumn
+                      refId="Package\LoadHON\Destination - InstructionSheetsToBeLoaded-HON.Inputs[Destination Input].Columns[InstructionSheetContainerType]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="InstructionSheetContainerType"
+                      externalMetadataColumnId="Package\LoadHON\Destination - InstructionSheetsToBeLoaded-HON.Inputs[Destination Input].ExternalColumns[InstructionSheetContainerType]"
+                      lineageId="Package\LoadHON\Source - Sheet1$.Outputs[Excel Source Output].Columns[InstructionSheetContainerType]" />
+                    <inputColumn
+                      refId="Package\LoadHON\Destination - InstructionSheetsToBeLoaded-HON.Inputs[Destination Input].Columns[InstructionSheetFileType]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="InstructionSheetFileType"
+                      externalMetadataColumnId="Package\LoadHON\Destination - InstructionSheetsToBeLoaded-HON.Inputs[Destination Input].ExternalColumns[InstructionSheetFileType]"
+                      lineageId="Package\LoadHON\Source - Sheet1$.Outputs[Excel Source Output].Columns[InstructionSheetFileType]" />
+                    <inputColumn
+                      refId="Package\LoadHON\Destination - InstructionSheetsToBeLoaded-HON.Inputs[Destination Input].Columns[InstructionSheetName]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="InstructionSheetName"
+                      externalMetadataColumnId="Package\LoadHON\Destination - InstructionSheetsToBeLoaded-HON.Inputs[Destination Input].ExternalColumns[InstructionSheetName]"
+                      lineageId="Package\LoadHON\Source - Sheet1$.Outputs[Excel Source Output].Columns[InstructionSheetName]" />
+                    <inputColumn
+                      refId="Package\LoadHON\Destination - InstructionSheetsToBeLoaded-HON.Inputs[Destination Input].Columns[InstructionSheetDocumentType]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="InstructionSheetDocumentType"
+                      externalMetadataColumnId="Package\LoadHON\Destination - InstructionSheetsToBeLoaded-HON.Inputs[Destination Input].ExternalColumns[InstructionSheetDocumentType]"
+                      lineageId="Package\LoadHON\Source - Sheet1$.Outputs[Excel Source Output].Columns[InstructionSheetDocumentType]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\LoadHON\Destination - InstructionSheetsToBeLoaded-HON.Inputs[Destination Input].ExternalColumns[BrandName]"
+                      dataType="wstr"
+                      length="255"
+                      name="BrandName" />
+                    <externalMetadataColumn
+                      refId="Package\LoadHON\Destination - InstructionSheetsToBeLoaded-HON.Inputs[Destination Input].ExternalColumns[ProductSeriesName]"
+                      dataType="wstr"
+                      length="255"
+                      name="ProductSeriesName" />
+                    <externalMetadataColumn
+                      refId="Package\LoadHON\Destination - InstructionSheetsToBeLoaded-HON.Inputs[Destination Input].ExternalColumns[ProductTypeName]"
+                      dataType="wstr"
+                      length="255"
+                      name="ProductTypeName" />
+                    <externalMetadataColumn
+                      refId="Package\LoadHON\Destination - InstructionSheetsToBeLoaded-HON.Inputs[Destination Input].ExternalColumns[BaseModelName]"
+                      dataType="wstr"
+                      length="255"
+                      name="BaseModelName" />
+                    <externalMetadataColumn
+                      refId="Package\LoadHON\Destination - InstructionSheetsToBeLoaded-HON.Inputs[Destination Input].ExternalColumns[InstructionSheetContainerName]"
+                      dataType="wstr"
+                      length="255"
+                      name="InstructionSheetContainerName" />
+                    <externalMetadataColumn
+                      refId="Package\LoadHON\Destination - InstructionSheetsToBeLoaded-HON.Inputs[Destination Input].ExternalColumns[InstructionSheetRevisionStatus]"
+                      dataType="wstr"
+                      length="255"
+                      name="InstructionSheetRevisionStatus" />
+                    <externalMetadataColumn
+                      refId="Package\LoadHON\Destination - InstructionSheetsToBeLoaded-HON.Inputs[Destination Input].ExternalColumns[InstructionSheetBookmark]"
+                      dataType="wstr"
+                      length="255"
+                      name="InstructionSheetBookmark" />
+                    <externalMetadataColumn
+                      refId="Package\LoadHON\Destination - InstructionSheetsToBeLoaded-HON.Inputs[Destination Input].ExternalColumns[InstructionSheetContainerType]"
+                      dataType="wstr"
+                      length="255"
+                      name="InstructionSheetContainerType" />
+                    <externalMetadataColumn
+                      refId="Package\LoadHON\Destination - InstructionSheetsToBeLoaded-HON.Inputs[Destination Input].ExternalColumns[InstructionSheetFileType]"
+                      dataType="wstr"
+                      length="255"
+                      name="InstructionSheetFileType" />
+                    <externalMetadataColumn
+                      refId="Package\LoadHON\Destination - InstructionSheetsToBeLoaded-HON.Inputs[Destination Input].ExternalColumns[InstructionSheetName]"
+                      dataType="wstr"
+                      length="255"
+                      name="InstructionSheetName" />
+                    <externalMetadataColumn
+                      refId="Package\LoadHON\Destination - InstructionSheetsToBeLoaded-HON.Inputs[Destination Input].ExternalColumns[InstructionSheetDocumentType]"
+                      dataType="wstr"
+                      length="255"
+                      name="InstructionSheetDocumentType" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\LoadHON\Destination - InstructionSheetsToBeLoaded-HON.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\LoadHON\Destination - InstructionSheetsToBeLoaded-HON.Inputs[Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\LoadHON\Destination - InstructionSheetsToBeLoaded-HON.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\LoadHON\Destination - InstructionSheetsToBeLoaded-HON.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\LoadHON\Destination - InstructionSheetsToBeLoaded-HON.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\LoadHON\Destination - InstructionSheetsToBeLoaded-HON.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\LoadHON\Source - Sheet1$"
+              componentClassID="Microsoft.ExcelSource"
+              contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Excel Source"
+              name="Source - Sheet1$"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">Sheet1$</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mapping from parameters in the SQL command to variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\LoadHON\Source - Sheet1$.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[ExcelHon]"
+                  connectionManagerRefId="Package.ConnectionManagers[ExcelHon]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\LoadHON\Source - Sheet1$.Outputs[Excel Source Output]"
+                  name="Excel Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\LoadHON\Source - Sheet1$.Outputs[Excel Source Output].Columns[BrandName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\LoadHON\Source - Sheet1$.Outputs[Excel Source Output].ExternalColumns[BrandName]"
+                      length="255"
+                      lineageId="Package\LoadHON\Source - Sheet1$.Outputs[Excel Source Output].Columns[BrandName]"
+                      name="BrandName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\LoadHON\Source - Sheet1$.Outputs[Excel Source Output].Columns[ProductSeriesName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\LoadHON\Source - Sheet1$.Outputs[Excel Source Output].ExternalColumns[ProductSeriesName]"
+                      length="255"
+                      lineageId="Package\LoadHON\Source - Sheet1$.Outputs[Excel Source Output].Columns[ProductSeriesName]"
+                      name="ProductSeriesName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\LoadHON\Source - Sheet1$.Outputs[Excel Source Output].Columns[ProductTypeName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\LoadHON\Source - Sheet1$.Outputs[Excel Source Output].ExternalColumns[ProductTypeName]"
+                      length="255"
+                      lineageId="Package\LoadHON\Source - Sheet1$.Outputs[Excel Source Output].Columns[ProductTypeName]"
+                      name="ProductTypeName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\LoadHON\Source - Sheet1$.Outputs[Excel Source Output].Columns[BaseModelName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\LoadHON\Source - Sheet1$.Outputs[Excel Source Output].ExternalColumns[BaseModelName]"
+                      length="255"
+                      lineageId="Package\LoadHON\Source - Sheet1$.Outputs[Excel Source Output].Columns[BaseModelName]"
+                      name="BaseModelName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\LoadHON\Source - Sheet1$.Outputs[Excel Source Output].Columns[InstructionSheetContainerName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\LoadHON\Source - Sheet1$.Outputs[Excel Source Output].ExternalColumns[InstructionSheetContainerName]"
+                      length="255"
+                      lineageId="Package\LoadHON\Source - Sheet1$.Outputs[Excel Source Output].Columns[InstructionSheetContainerName]"
+                      name="InstructionSheetContainerName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\LoadHON\Source - Sheet1$.Outputs[Excel Source Output].Columns[InstructionSheetRevisionStatus]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\LoadHON\Source - Sheet1$.Outputs[Excel Source Output].ExternalColumns[InstructionSheetRevisionStatus]"
+                      length="255"
+                      lineageId="Package\LoadHON\Source - Sheet1$.Outputs[Excel Source Output].Columns[InstructionSheetRevisionStatus]"
+                      name="InstructionSheetRevisionStatus"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\LoadHON\Source - Sheet1$.Outputs[Excel Source Output].Columns[InstructionSheetBookmark]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\LoadHON\Source - Sheet1$.Outputs[Excel Source Output].ExternalColumns[InstructionSheetBookmark]"
+                      length="255"
+                      lineageId="Package\LoadHON\Source - Sheet1$.Outputs[Excel Source Output].Columns[InstructionSheetBookmark]"
+                      name="InstructionSheetBookmark"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\LoadHON\Source - Sheet1$.Outputs[Excel Source Output].Columns[InstructionSheetContainerType]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\LoadHON\Source - Sheet1$.Outputs[Excel Source Output].ExternalColumns[InstructionSheetContainerType]"
+                      length="255"
+                      lineageId="Package\LoadHON\Source - Sheet1$.Outputs[Excel Source Output].Columns[InstructionSheetContainerType]"
+                      name="InstructionSheetContainerType"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\LoadHON\Source - Sheet1$.Outputs[Excel Source Output].Columns[InstructionSheetFileType]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\LoadHON\Source - Sheet1$.Outputs[Excel Source Output].ExternalColumns[InstructionSheetFileType]"
+                      length="255"
+                      lineageId="Package\LoadHON\Source - Sheet1$.Outputs[Excel Source Output].Columns[InstructionSheetFileType]"
+                      name="InstructionSheetFileType"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\LoadHON\Source - Sheet1$.Outputs[Excel Source Output].Columns[InstructionSheetName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\LoadHON\Source - Sheet1$.Outputs[Excel Source Output].ExternalColumns[InstructionSheetName]"
+                      length="255"
+                      lineageId="Package\LoadHON\Source - Sheet1$.Outputs[Excel Source Output].Columns[InstructionSheetName]"
+                      name="InstructionSheetName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\LoadHON\Source - Sheet1$.Outputs[Excel Source Output].Columns[InstructionSheetDocumentType]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\LoadHON\Source - Sheet1$.Outputs[Excel Source Output].ExternalColumns[InstructionSheetDocumentType]"
+                      length="255"
+                      lineageId="Package\LoadHON\Source - Sheet1$.Outputs[Excel Source Output].Columns[InstructionSheetDocumentType]"
+                      name="InstructionSheetDocumentType"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\LoadHON\Source - Sheet1$.Outputs[Excel Source Output].ExternalColumns[BrandName]"
+                      dataType="wstr"
+                      length="255"
+                      name="BrandName" />
+                    <externalMetadataColumn
+                      refId="Package\LoadHON\Source - Sheet1$.Outputs[Excel Source Output].ExternalColumns[ProductSeriesName]"
+                      dataType="wstr"
+                      length="255"
+                      name="ProductSeriesName" />
+                    <externalMetadataColumn
+                      refId="Package\LoadHON\Source - Sheet1$.Outputs[Excel Source Output].ExternalColumns[ProductTypeName]"
+                      dataType="wstr"
+                      length="255"
+                      name="ProductTypeName" />
+                    <externalMetadataColumn
+                      refId="Package\LoadHON\Source - Sheet1$.Outputs[Excel Source Output].ExternalColumns[BaseModelName]"
+                      dataType="wstr"
+                      length="255"
+                      name="BaseModelName" />
+                    <externalMetadataColumn
+                      refId="Package\LoadHON\Source - Sheet1$.Outputs[Excel Source Output].ExternalColumns[InstructionSheetContainerName]"
+                      dataType="wstr"
+                      length="255"
+                      name="InstructionSheetContainerName" />
+                    <externalMetadataColumn
+                      refId="Package\LoadHON\Source - Sheet1$.Outputs[Excel Source Output].ExternalColumns[InstructionSheetRevisionStatus]"
+                      dataType="wstr"
+                      length="255"
+                      name="InstructionSheetRevisionStatus" />
+                    <externalMetadataColumn
+                      refId="Package\LoadHON\Source - Sheet1$.Outputs[Excel Source Output].ExternalColumns[InstructionSheetBookmark]"
+                      dataType="wstr"
+                      length="255"
+                      name="InstructionSheetBookmark" />
+                    <externalMetadataColumn
+                      refId="Package\LoadHON\Source - Sheet1$.Outputs[Excel Source Output].ExternalColumns[InstructionSheetContainerType]"
+                      dataType="wstr"
+                      length="255"
+                      name="InstructionSheetContainerType" />
+                    <externalMetadataColumn
+                      refId="Package\LoadHON\Source - Sheet1$.Outputs[Excel Source Output].ExternalColumns[InstructionSheetFileType]"
+                      dataType="wstr"
+                      length="255"
+                      name="InstructionSheetFileType" />
+                    <externalMetadataColumn
+                      refId="Package\LoadHON\Source - Sheet1$.Outputs[Excel Source Output].ExternalColumns[InstructionSheetName]"
+                      dataType="wstr"
+                      length="255"
+                      name="InstructionSheetName" />
+                    <externalMetadataColumn
+                      refId="Package\LoadHON\Source - Sheet1$.Outputs[Excel Source Output].ExternalColumns[InstructionSheetDocumentType]"
+                      dataType="wstr"
+                      length="255"
+                      name="InstructionSheetDocumentType" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\LoadHON\Source - Sheet1$.Outputs[Excel Source Error Output]"
+                  isErrorOut="true"
+                  name="Excel Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\LoadHON\Source - Sheet1$.Outputs[Excel Source Error Output].Columns[BrandName]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\LoadHON\Source - Sheet1$.Outputs[Excel Source Error Output].Columns[BrandName]"
+                      name="BrandName" />
+                    <outputColumn
+                      refId="Package\LoadHON\Source - Sheet1$.Outputs[Excel Source Error Output].Columns[ProductSeriesName]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\LoadHON\Source - Sheet1$.Outputs[Excel Source Error Output].Columns[ProductSeriesName]"
+                      name="ProductSeriesName" />
+                    <outputColumn
+                      refId="Package\LoadHON\Source - Sheet1$.Outputs[Excel Source Error Output].Columns[ProductTypeName]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\LoadHON\Source - Sheet1$.Outputs[Excel Source Error Output].Columns[ProductTypeName]"
+                      name="ProductTypeName" />
+                    <outputColumn
+                      refId="Package\LoadHON\Source - Sheet1$.Outputs[Excel Source Error Output].Columns[BaseModelName]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\LoadHON\Source - Sheet1$.Outputs[Excel Source Error Output].Columns[BaseModelName]"
+                      name="BaseModelName" />
+                    <outputColumn
+                      refId="Package\LoadHON\Source - Sheet1$.Outputs[Excel Source Error Output].Columns[InstructionSheetContainerName]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\LoadHON\Source - Sheet1$.Outputs[Excel Source Error Output].Columns[InstructionSheetContainerName]"
+                      name="InstructionSheetContainerName" />
+                    <outputColumn
+                      refId="Package\LoadHON\Source - Sheet1$.Outputs[Excel Source Error Output].Columns[InstructionSheetRevisionStatus]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\LoadHON\Source - Sheet1$.Outputs[Excel Source Error Output].Columns[InstructionSheetRevisionStatus]"
+                      name="InstructionSheetRevisionStatus" />
+                    <outputColumn
+                      refId="Package\LoadHON\Source - Sheet1$.Outputs[Excel Source Error Output].Columns[InstructionSheetBookmark]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\LoadHON\Source - Sheet1$.Outputs[Excel Source Error Output].Columns[InstructionSheetBookmark]"
+                      name="InstructionSheetBookmark" />
+                    <outputColumn
+                      refId="Package\LoadHON\Source - Sheet1$.Outputs[Excel Source Error Output].Columns[InstructionSheetContainerType]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\LoadHON\Source - Sheet1$.Outputs[Excel Source Error Output].Columns[InstructionSheetContainerType]"
+                      name="InstructionSheetContainerType" />
+                    <outputColumn
+                      refId="Package\LoadHON\Source - Sheet1$.Outputs[Excel Source Error Output].Columns[InstructionSheetFileType]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\LoadHON\Source - Sheet1$.Outputs[Excel Source Error Output].Columns[InstructionSheetFileType]"
+                      name="InstructionSheetFileType" />
+                    <outputColumn
+                      refId="Package\LoadHON\Source - Sheet1$.Outputs[Excel Source Error Output].Columns[InstructionSheetName]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\LoadHON\Source - Sheet1$.Outputs[Excel Source Error Output].Columns[InstructionSheetName]"
+                      name="InstructionSheetName" />
+                    <outputColumn
+                      refId="Package\LoadHON\Source - Sheet1$.Outputs[Excel Source Error Output].Columns[InstructionSheetDocumentType]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\LoadHON\Source - Sheet1$.Outputs[Excel Source Error Output].Columns[InstructionSheetDocumentType]"
+                      name="InstructionSheetDocumentType" />
+                    <outputColumn
+                      refId="Package\LoadHON\Source - Sheet1$.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\LoadHON\Source - Sheet1$.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\LoadHON\Source - Sheet1$.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\LoadHON\Source - Sheet1$.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\LoadHON.Paths[Excel Source Output]"
+              endId="Package\LoadHON\Destination - InstructionSheetsToBeLoaded-HON.Inputs[Destination Input]"
+              name="Excel Source Output"
+              startId="Package\LoadHON\Source - Sheet1$.Outputs[Excel Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\LoadMaxon"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:DelayValidation="True"
+      DTS:DTSID="{7fff139d-f292-4fdb-94c2-826db35ed47f}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:FailPackageOnFailure="True"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="LoadMaxon"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:EventHandlers>
+        <DTS:EventHandler
+          DTS:refId="Package\LoadMaxon.EventHandlers[OnError]"
+          DTS:CreationName="OnError"
+          DTS:DTSID="{279BCE36-9550-4C5E-A8E9-1058CF87DE38}"
+          DTS:EventID="0"
+          DTS:EventName="OnError"
+          DTS:LocaleID="-1">
+          <DTS:Variables>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:Description="The propagate property of the event"
+              DTS:DTSID="{0CBBAD91-3E29-4FA0-B6B1-7E805BE1FD76}"
+              DTS:IncludeInDebugDump="6789"
+              DTS:Namespace="System"
+              DTS:ObjectName="Propagate">
+              <DTS:VariableValue
+                DTS:DataType="11">-1</DTS:VariableValue>
+            </DTS:Variable>
+          </DTS:Variables>
+          <DTS:Executables>
+            <DTS:Executable
+              DTS:refId="Package\LoadMaxon.EventHandlers[OnError]\Send Mail Task"
+              DTS:CreationName="Microsoft.SendMailTask"
+              DTS:Description="Send Mail Task"
+              DTS:DTSID="{47f061fd-01f1-4725-8669-e873506606ac}"
+              DTS:ExecutableType="Microsoft.SendMailTask"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="Send Mail Task">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <SendMailTask:SendMailTaskData
+                  SendMailTask:SMTPServer="{97B307DC-738F-4EDF-87C6-71EE1C7141A6}"
+                  SendMailTask:From="LoadIntallProductStaging@hnicorp.com"
+                  SendMailTask:To="jardml@hnicorp.com"
+                  SendMailTask:Subject="Fail to Load Maxon data"
+                  SendMailTask:MessageSource="Fail to Load Maxon data" xmlns:SendMailTask="www.microsoft.com/sqlserver/dts/tasks/sendmailtask" />
+              </DTS:ObjectData>
+            </DTS:Executable>
+          </DTS:Executables>
+        </DTS:EventHandler>
+      </DTS:EventHandlers>
+      <DTS:ObjectData>
+        <pipeline
+          defaultBufferSize="3145728"
+          version="1">
+          <components>
+            <component
+              refId="Package\LoadMaxon\Destination - InstructionSheetsToBeLoaded-Maxon"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Destination - InstructionSheetsToBeLoaded-Maxon"
+              usesDispositions="true"
+              validateExternalMetadata="False"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[InstructionSheetsToBeLoaded]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\LoadMaxon\Destination - InstructionSheetsToBeLoaded-Maxon.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[InstallProductStagingTable]"
+                  connectionManagerRefId="Package.ConnectionManagers[InstallProductStagingTable]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\LoadMaxon\Destination - InstructionSheetsToBeLoaded-Maxon.Inputs[Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\LoadMaxon\Destination - InstructionSheetsToBeLoaded-Maxon.Inputs[Destination Input].Columns[BrandName]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="BrandName"
+                      externalMetadataColumnId="Package\LoadMaxon\Destination - InstructionSheetsToBeLoaded-Maxon.Inputs[Destination Input].ExternalColumns[BrandName]"
+                      lineageId="Package\LoadMaxon\Source - 'Maxon Instructions CSV$'.Outputs[Excel Source Output].Columns[BrandName]" />
+                    <inputColumn
+                      refId="Package\LoadMaxon\Destination - InstructionSheetsToBeLoaded-Maxon.Inputs[Destination Input].Columns[ProductSeriesName]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="ProductSeriesName"
+                      externalMetadataColumnId="Package\LoadMaxon\Destination - InstructionSheetsToBeLoaded-Maxon.Inputs[Destination Input].ExternalColumns[ProductSeriesName]"
+                      lineageId="Package\LoadMaxon\Source - 'Maxon Instructions CSV$'.Outputs[Excel Source Output].Columns[ProductSeriesName]" />
+                    <inputColumn
+                      refId="Package\LoadMaxon\Destination - InstructionSheetsToBeLoaded-Maxon.Inputs[Destination Input].Columns[ProductTypeName]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="ProductTypeName"
+                      externalMetadataColumnId="Package\LoadMaxon\Destination - InstructionSheetsToBeLoaded-Maxon.Inputs[Destination Input].ExternalColumns[ProductTypeName]"
+                      lineageId="Package\LoadMaxon\Source - 'Maxon Instructions CSV$'.Outputs[Excel Source Output].Columns[ProductTypeName]" />
+                    <inputColumn
+                      refId="Package\LoadMaxon\Destination - InstructionSheetsToBeLoaded-Maxon.Inputs[Destination Input].Columns[BaseModelName]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="BaseModelName"
+                      externalMetadataColumnId="Package\LoadMaxon\Destination - InstructionSheetsToBeLoaded-Maxon.Inputs[Destination Input].ExternalColumns[BaseModelName]"
+                      lineageId="Package\LoadMaxon\Source - 'Maxon Instructions CSV$'.Outputs[Excel Source Output].Columns[BaseModelName]" />
+                    <inputColumn
+                      refId="Package\LoadMaxon\Destination - InstructionSheetsToBeLoaded-Maxon.Inputs[Destination Input].Columns[InstructionSheetContainerName]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="InstructionSheetContainerName"
+                      externalMetadataColumnId="Package\LoadMaxon\Destination - InstructionSheetsToBeLoaded-Maxon.Inputs[Destination Input].ExternalColumns[InstructionSheetContainerName]"
+                      lineageId="Package\LoadMaxon\Source - 'Maxon Instructions CSV$'.Outputs[Excel Source Output].Columns[InstructionSheetContainerName]" />
+                    <inputColumn
+                      refId="Package\LoadMaxon\Destination - InstructionSheetsToBeLoaded-Maxon.Inputs[Destination Input].Columns[InstructionSheetRevisionStatus]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="InstructionSheetRevisionStatus"
+                      externalMetadataColumnId="Package\LoadMaxon\Destination - InstructionSheetsToBeLoaded-Maxon.Inputs[Destination Input].ExternalColumns[InstructionSheetRevisionStatus]"
+                      lineageId="Package\LoadMaxon\Source - 'Maxon Instructions CSV$'.Outputs[Excel Source Output].Columns[InstructionSheetRevisionStatus]" />
+                    <inputColumn
+                      refId="Package\LoadMaxon\Destination - InstructionSheetsToBeLoaded-Maxon.Inputs[Destination Input].Columns[InstructionSheetBookmark]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="InstructionSheetBookmark"
+                      externalMetadataColumnId="Package\LoadMaxon\Destination - InstructionSheetsToBeLoaded-Maxon.Inputs[Destination Input].ExternalColumns[InstructionSheetBookmark]"
+                      lineageId="Package\LoadMaxon\Source - 'Maxon Instructions CSV$'.Outputs[Excel Source Output].Columns[InstructionSheetBookmark]" />
+                    <inputColumn
+                      refId="Package\LoadMaxon\Destination - InstructionSheetsToBeLoaded-Maxon.Inputs[Destination Input].Columns[InstructionSheetContainerType]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="InstructionSheetContainerType"
+                      externalMetadataColumnId="Package\LoadMaxon\Destination - InstructionSheetsToBeLoaded-Maxon.Inputs[Destination Input].ExternalColumns[InstructionSheetContainerType]"
+                      lineageId="Package\LoadMaxon\Source - 'Maxon Instructions CSV$'.Outputs[Excel Source Output].Columns[InstructionSheetContainerType]" />
+                    <inputColumn
+                      refId="Package\LoadMaxon\Destination - InstructionSheetsToBeLoaded-Maxon.Inputs[Destination Input].Columns[InstructionSheetFileType]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="InstructionSheetFileType"
+                      externalMetadataColumnId="Package\LoadMaxon\Destination - InstructionSheetsToBeLoaded-Maxon.Inputs[Destination Input].ExternalColumns[InstructionSheetFileType]"
+                      lineageId="Package\LoadMaxon\Source - 'Maxon Instructions CSV$'.Outputs[Excel Source Output].Columns[InstructionSheetFileType]" />
+                    <inputColumn
+                      refId="Package\LoadMaxon\Destination - InstructionSheetsToBeLoaded-Maxon.Inputs[Destination Input].Columns[InstructionSheetName]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="InstructionSheetName"
+                      externalMetadataColumnId="Package\LoadMaxon\Destination - InstructionSheetsToBeLoaded-Maxon.Inputs[Destination Input].ExternalColumns[InstructionSheetName]"
+                      lineageId="Package\LoadMaxon\Source - 'Maxon Instructions CSV$'.Outputs[Excel Source Output].Columns[InstructionSheetName]" />
+                    <inputColumn
+                      refId="Package\LoadMaxon\Destination - InstructionSheetsToBeLoaded-Maxon.Inputs[Destination Input].Columns[InstructionSheetDocumentType]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="InstructionSheetDocumentType"
+                      externalMetadataColumnId="Package\LoadMaxon\Destination - InstructionSheetsToBeLoaded-Maxon.Inputs[Destination Input].ExternalColumns[InstructionSheetDocumentType]"
+                      lineageId="Package\LoadMaxon\Source - 'Maxon Instructions CSV$'.Outputs[Excel Source Output].Columns[InstructionSheetDocumentType]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\LoadMaxon\Destination - InstructionSheetsToBeLoaded-Maxon.Inputs[Destination Input].ExternalColumns[BrandName]"
+                      dataType="wstr"
+                      length="255"
+                      name="BrandName" />
+                    <externalMetadataColumn
+                      refId="Package\LoadMaxon\Destination - InstructionSheetsToBeLoaded-Maxon.Inputs[Destination Input].ExternalColumns[ProductSeriesName]"
+                      dataType="wstr"
+                      length="255"
+                      name="ProductSeriesName" />
+                    <externalMetadataColumn
+                      refId="Package\LoadMaxon\Destination - InstructionSheetsToBeLoaded-Maxon.Inputs[Destination Input].ExternalColumns[ProductTypeName]"
+                      dataType="wstr"
+                      length="255"
+                      name="ProductTypeName" />
+                    <externalMetadataColumn
+                      refId="Package\LoadMaxon\Destination - InstructionSheetsToBeLoaded-Maxon.Inputs[Destination Input].ExternalColumns[BaseModelName]"
+                      dataType="wstr"
+                      length="255"
+                      name="BaseModelName" />
+                    <externalMetadataColumn
+                      refId="Package\LoadMaxon\Destination - InstructionSheetsToBeLoaded-Maxon.Inputs[Destination Input].ExternalColumns[InstructionSheetContainerName]"
+                      dataType="wstr"
+                      length="255"
+                      name="InstructionSheetContainerName" />
+                    <externalMetadataColumn
+                      refId="Package\LoadMaxon\Destination - InstructionSheetsToBeLoaded-Maxon.Inputs[Destination Input].ExternalColumns[InstructionSheetRevisionStatus]"
+                      dataType="wstr"
+                      length="255"
+                      name="InstructionSheetRevisionStatus" />
+                    <externalMetadataColumn
+                      refId="Package\LoadMaxon\Destination - InstructionSheetsToBeLoaded-Maxon.Inputs[Destination Input].ExternalColumns[InstructionSheetBookmark]"
+                      dataType="wstr"
+                      length="255"
+                      name="InstructionSheetBookmark" />
+                    <externalMetadataColumn
+                      refId="Package\LoadMaxon\Destination - InstructionSheetsToBeLoaded-Maxon.Inputs[Destination Input].ExternalColumns[InstructionSheetContainerType]"
+                      dataType="wstr"
+                      length="255"
+                      name="InstructionSheetContainerType" />
+                    <externalMetadataColumn
+                      refId="Package\LoadMaxon\Destination - InstructionSheetsToBeLoaded-Maxon.Inputs[Destination Input].ExternalColumns[InstructionSheetFileType]"
+                      dataType="wstr"
+                      length="255"
+                      name="InstructionSheetFileType" />
+                    <externalMetadataColumn
+                      refId="Package\LoadMaxon\Destination - InstructionSheetsToBeLoaded-Maxon.Inputs[Destination Input].ExternalColumns[InstructionSheetName]"
+                      dataType="wstr"
+                      length="255"
+                      name="InstructionSheetName" />
+                    <externalMetadataColumn
+                      refId="Package\LoadMaxon\Destination - InstructionSheetsToBeLoaded-Maxon.Inputs[Destination Input].ExternalColumns[InstructionSheetDocumentType]"
+                      dataType="wstr"
+                      length="255"
+                      name="InstructionSheetDocumentType" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\LoadMaxon\Destination - InstructionSheetsToBeLoaded-Maxon.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\LoadMaxon\Destination - InstructionSheetsToBeLoaded-Maxon.Inputs[Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\LoadMaxon\Destination - InstructionSheetsToBeLoaded-Maxon.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\LoadMaxon\Destination - InstructionSheetsToBeLoaded-Maxon.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\LoadMaxon\Destination - InstructionSheetsToBeLoaded-Maxon.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\LoadMaxon\Destination - InstructionSheetsToBeLoaded-Maxon.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\LoadMaxon\Source - 'Maxon Instructions CSV$'"
+              componentClassID="Microsoft.ExcelSource"
+              contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Excel Source"
+              name="Source - 'Maxon Instructions CSV$'"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">'Maxon Instructions CSV$'</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mapping from parameters in the SQL command to variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\LoadMaxon\Source - 'Maxon Instructions CSV$'.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[ExcelMaxon]"
+                  connectionManagerRefId="Package.ConnectionManagers[ExcelMaxon]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\LoadMaxon\Source - 'Maxon Instructions CSV$'.Outputs[Excel Source Output]"
+                  name="Excel Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\LoadMaxon\Source - 'Maxon Instructions CSV$'.Outputs[Excel Source Output].Columns[BrandName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\LoadMaxon\Source - 'Maxon Instructions CSV$'.Outputs[Excel Source Output].ExternalColumns[BrandName]"
+                      length="255"
+                      lineageId="Package\LoadMaxon\Source - 'Maxon Instructions CSV$'.Outputs[Excel Source Output].Columns[BrandName]"
+                      name="BrandName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\LoadMaxon\Source - 'Maxon Instructions CSV$'.Outputs[Excel Source Output].Columns[ProductSeriesName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\LoadMaxon\Source - 'Maxon Instructions CSV$'.Outputs[Excel Source Output].ExternalColumns[ProductSeriesName]"
+                      length="255"
+                      lineageId="Package\LoadMaxon\Source - 'Maxon Instructions CSV$'.Outputs[Excel Source Output].Columns[ProductSeriesName]"
+                      name="ProductSeriesName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\LoadMaxon\Source - 'Maxon Instructions CSV$'.Outputs[Excel Source Output].Columns[ProductTypeName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\LoadMaxon\Source - 'Maxon Instructions CSV$'.Outputs[Excel Source Output].ExternalColumns[ProductTypeName]"
+                      length="255"
+                      lineageId="Package\LoadMaxon\Source - 'Maxon Instructions CSV$'.Outputs[Excel Source Output].Columns[ProductTypeName]"
+                      name="ProductTypeName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\LoadMaxon\Source - 'Maxon Instructions CSV$'.Outputs[Excel Source Output].Columns[BaseModelName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\LoadMaxon\Source - 'Maxon Instructions CSV$'.Outputs[Excel Source Output].ExternalColumns[BaseModelName]"
+                      length="255"
+                      lineageId="Package\LoadMaxon\Source - 'Maxon Instructions CSV$'.Outputs[Excel Source Output].Columns[BaseModelName]"
+                      name="BaseModelName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\LoadMaxon\Source - 'Maxon Instructions CSV$'.Outputs[Excel Source Output].Columns[InstructionSheetContainerName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\LoadMaxon\Source - 'Maxon Instructions CSV$'.Outputs[Excel Source Output].ExternalColumns[InstructionSheetContainerName]"
+                      length="255"
+                      lineageId="Package\LoadMaxon\Source - 'Maxon Instructions CSV$'.Outputs[Excel Source Output].Columns[InstructionSheetContainerName]"
+                      name="InstructionSheetContainerName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\LoadMaxon\Source - 'Maxon Instructions CSV$'.Outputs[Excel Source Output].Columns[InstructionSheetRevisionStatus]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\LoadMaxon\Source - 'Maxon Instructions CSV$'.Outputs[Excel Source Output].ExternalColumns[InstructionSheetRevisionStatus]"
+                      length="255"
+                      lineageId="Package\LoadMaxon\Source - 'Maxon Instructions CSV$'.Outputs[Excel Source Output].Columns[InstructionSheetRevisionStatus]"
+                      name="InstructionSheetRevisionStatus"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\LoadMaxon\Source - 'Maxon Instructions CSV$'.Outputs[Excel Source Output].Columns[InstructionSheetBookmark]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\LoadMaxon\Source - 'Maxon Instructions CSV$'.Outputs[Excel Source Output].ExternalColumns[InstructionSheetBookmark]"
+                      length="255"
+                      lineageId="Package\LoadMaxon\Source - 'Maxon Instructions CSV$'.Outputs[Excel Source Output].Columns[InstructionSheetBookmark]"
+                      name="InstructionSheetBookmark"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\LoadMaxon\Source - 'Maxon Instructions CSV$'.Outputs[Excel Source Output].Columns[InstructionSheetContainerType]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\LoadMaxon\Source - 'Maxon Instructions CSV$'.Outputs[Excel Source Output].ExternalColumns[InstructionSheetContainerType]"
+                      length="255"
+                      lineageId="Package\LoadMaxon\Source - 'Maxon Instructions CSV$'.Outputs[Excel Source Output].Columns[InstructionSheetContainerType]"
+                      name="InstructionSheetContainerType"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\LoadMaxon\Source - 'Maxon Instructions CSV$'.Outputs[Excel Source Output].Columns[InstructionSheetFileType]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\LoadMaxon\Source - 'Maxon Instructions CSV$'.Outputs[Excel Source Output].ExternalColumns[InstructionSheetFileType]"
+                      length="255"
+                      lineageId="Package\LoadMaxon\Source - 'Maxon Instructions CSV$'.Outputs[Excel Source Output].Columns[InstructionSheetFileType]"
+                      name="InstructionSheetFileType"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\LoadMaxon\Source - 'Maxon Instructions CSV$'.Outputs[Excel Source Output].Columns[InstructionSheetName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\LoadMaxon\Source - 'Maxon Instructions CSV$'.Outputs[Excel Source Output].ExternalColumns[InstructionSheetName]"
+                      length="255"
+                      lineageId="Package\LoadMaxon\Source - 'Maxon Instructions CSV$'.Outputs[Excel Source Output].Columns[InstructionSheetName]"
+                      name="InstructionSheetName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\LoadMaxon\Source - 'Maxon Instructions CSV$'.Outputs[Excel Source Output].Columns[InstructionSheetDocumentType]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\LoadMaxon\Source - 'Maxon Instructions CSV$'.Outputs[Excel Source Output].ExternalColumns[InstructionSheetDocumentType]"
+                      length="255"
+                      lineageId="Package\LoadMaxon\Source - 'Maxon Instructions CSV$'.Outputs[Excel Source Output].Columns[InstructionSheetDocumentType]"
+                      name="InstructionSheetDocumentType"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\LoadMaxon\Source - 'Maxon Instructions CSV$'.Outputs[Excel Source Output].ExternalColumns[BrandName]"
+                      dataType="wstr"
+                      length="255"
+                      name="BrandName" />
+                    <externalMetadataColumn
+                      refId="Package\LoadMaxon\Source - 'Maxon Instructions CSV$'.Outputs[Excel Source Output].ExternalColumns[ProductSeriesName]"
+                      dataType="wstr"
+                      length="255"
+                      name="ProductSeriesName" />
+                    <externalMetadataColumn
+                      refId="Package\LoadMaxon\Source - 'Maxon Instructions CSV$'.Outputs[Excel Source Output].ExternalColumns[ProductTypeName]"
+                      dataType="wstr"
+                      length="255"
+                      name="ProductTypeName" />
+                    <externalMetadataColumn
+                      refId="Package\LoadMaxon\Source - 'Maxon Instructions CSV$'.Outputs[Excel Source Output].ExternalColumns[BaseModelName]"
+                      dataType="wstr"
+                      length="255"
+                      name="BaseModelName" />
+                    <externalMetadataColumn
+                      refId="Package\LoadMaxon\Source - 'Maxon Instructions CSV$'.Outputs[Excel Source Output].ExternalColumns[InstructionSheetContainerName]"
+                      dataType="wstr"
+                      length="255"
+                      name="InstructionSheetContainerName" />
+                    <externalMetadataColumn
+                      refId="Package\LoadMaxon\Source - 'Maxon Instructions CSV$'.Outputs[Excel Source Output].ExternalColumns[InstructionSheetRevisionStatus]"
+                      dataType="wstr"
+                      length="255"
+                      name="InstructionSheetRevisionStatus" />
+                    <externalMetadataColumn
+                      refId="Package\LoadMaxon\Source - 'Maxon Instructions CSV$'.Outputs[Excel Source Output].ExternalColumns[InstructionSheetBookmark]"
+                      dataType="wstr"
+                      length="255"
+                      name="InstructionSheetBookmark" />
+                    <externalMetadataColumn
+                      refId="Package\LoadMaxon\Source - 'Maxon Instructions CSV$'.Outputs[Excel Source Output].ExternalColumns[InstructionSheetContainerType]"
+                      dataType="wstr"
+                      length="255"
+                      name="InstructionSheetContainerType" />
+                    <externalMetadataColumn
+                      refId="Package\LoadMaxon\Source - 'Maxon Instructions CSV$'.Outputs[Excel Source Output].ExternalColumns[InstructionSheetFileType]"
+                      dataType="wstr"
+                      length="255"
+                      name="InstructionSheetFileType" />
+                    <externalMetadataColumn
+                      refId="Package\LoadMaxon\Source - 'Maxon Instructions CSV$'.Outputs[Excel Source Output].ExternalColumns[InstructionSheetName]"
+                      dataType="wstr"
+                      length="255"
+                      name="InstructionSheetName" />
+                    <externalMetadataColumn
+                      refId="Package\LoadMaxon\Source - 'Maxon Instructions CSV$'.Outputs[Excel Source Output].ExternalColumns[InstructionSheetDocumentType]"
+                      dataType="wstr"
+                      length="255"
+                      name="InstructionSheetDocumentType" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\LoadMaxon\Source - 'Maxon Instructions CSV$'.Outputs[Excel Source Error Output]"
+                  isErrorOut="true"
+                  name="Excel Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\LoadMaxon\Source - 'Maxon Instructions CSV$'.Outputs[Excel Source Error Output].Columns[BrandName]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\LoadMaxon\Source - 'Maxon Instructions CSV$'.Outputs[Excel Source Error Output].Columns[BrandName]"
+                      name="BrandName" />
+                    <outputColumn
+                      refId="Package\LoadMaxon\Source - 'Maxon Instructions CSV$'.Outputs[Excel Source Error Output].Columns[ProductSeriesName]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\LoadMaxon\Source - 'Maxon Instructions CSV$'.Outputs[Excel Source Error Output].Columns[ProductSeriesName]"
+                      name="ProductSeriesName" />
+                    <outputColumn
+                      refId="Package\LoadMaxon\Source - 'Maxon Instructions CSV$'.Outputs[Excel Source Error Output].Columns[ProductTypeName]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\LoadMaxon\Source - 'Maxon Instructions CSV$'.Outputs[Excel Source Error Output].Columns[ProductTypeName]"
+                      name="ProductTypeName" />
+                    <outputColumn
+                      refId="Package\LoadMaxon\Source - 'Maxon Instructions CSV$'.Outputs[Excel Source Error Output].Columns[BaseModelName]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\LoadMaxon\Source - 'Maxon Instructions CSV$'.Outputs[Excel Source Error Output].Columns[BaseModelName]"
+                      name="BaseModelName" />
+                    <outputColumn
+                      refId="Package\LoadMaxon\Source - 'Maxon Instructions CSV$'.Outputs[Excel Source Error Output].Columns[InstructionSheetContainerName]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\LoadMaxon\Source - 'Maxon Instructions CSV$'.Outputs[Excel Source Error Output].Columns[InstructionSheetContainerName]"
+                      name="InstructionSheetContainerName" />
+                    <outputColumn
+                      refId="Package\LoadMaxon\Source - 'Maxon Instructions CSV$'.Outputs[Excel Source Error Output].Columns[InstructionSheetRevisionStatus]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\LoadMaxon\Source - 'Maxon Instructions CSV$'.Outputs[Excel Source Error Output].Columns[InstructionSheetRevisionStatus]"
+                      name="InstructionSheetRevisionStatus" />
+                    <outputColumn
+                      refId="Package\LoadMaxon\Source - 'Maxon Instructions CSV$'.Outputs[Excel Source Error Output].Columns[InstructionSheetBookmark]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\LoadMaxon\Source - 'Maxon Instructions CSV$'.Outputs[Excel Source Error Output].Columns[InstructionSheetBookmark]"
+                      name="InstructionSheetBookmark" />
+                    <outputColumn
+                      refId="Package\LoadMaxon\Source - 'Maxon Instructions CSV$'.Outputs[Excel Source Error Output].Columns[InstructionSheetContainerType]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\LoadMaxon\Source - 'Maxon Instructions CSV$'.Outputs[Excel Source Error Output].Columns[InstructionSheetContainerType]"
+                      name="InstructionSheetContainerType" />
+                    <outputColumn
+                      refId="Package\LoadMaxon\Source - 'Maxon Instructions CSV$'.Outputs[Excel Source Error Output].Columns[InstructionSheetFileType]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\LoadMaxon\Source - 'Maxon Instructions CSV$'.Outputs[Excel Source Error Output].Columns[InstructionSheetFileType]"
+                      name="InstructionSheetFileType" />
+                    <outputColumn
+                      refId="Package\LoadMaxon\Source - 'Maxon Instructions CSV$'.Outputs[Excel Source Error Output].Columns[InstructionSheetName]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\LoadMaxon\Source - 'Maxon Instructions CSV$'.Outputs[Excel Source Error Output].Columns[InstructionSheetName]"
+                      name="InstructionSheetName" />
+                    <outputColumn
+                      refId="Package\LoadMaxon\Source - 'Maxon Instructions CSV$'.Outputs[Excel Source Error Output].Columns[InstructionSheetDocumentType]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\LoadMaxon\Source - 'Maxon Instructions CSV$'.Outputs[Excel Source Error Output].Columns[InstructionSheetDocumentType]"
+                      name="InstructionSheetDocumentType" />
+                    <outputColumn
+                      refId="Package\LoadMaxon\Source - 'Maxon Instructions CSV$'.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\LoadMaxon\Source - 'Maxon Instructions CSV$'.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\LoadMaxon\Source - 'Maxon Instructions CSV$'.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\LoadMaxon\Source - 'Maxon Instructions CSV$'.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\LoadMaxon.Paths[Excel Source Output]"
+              endId="Package\LoadMaxon\Destination - InstructionSheetsToBeLoaded-Maxon.Inputs[Destination Input]"
+              name="Excel Source Output"
+              startId="Package\LoadMaxon\Source - 'Maxon Instructions CSV$'.Outputs[Excel Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{41D2C88D-DA1A-41B6-9F7C-2D0DAF3338D6}"
+      DTS:From="Package\CreateStagingTable"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\LoadAllsteel" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{BB95DBF8-C9C8-447A-8D74-DABB8229CC9F}"
+      DTS:From="Package\LoadAllsteel"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\LoadHON" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{E41DEA0B-AD17-46B4-9140-D7F72999850A}"
+      DTS:From="Package\LoadHON"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\LoadMaxon" />
+  </DTS:PrecedenceConstraints>
+  <DTS:EventHandlers>
+    <DTS:EventHandler
+      DTS:refId="Package.EventHandlers[OnError]"
+      DTS:CreationName="OnError"
+      DTS:DTSID="{84284737-6263-4753-A82B-128112BDD2A9}"
+      DTS:EventID="0"
+      DTS:EventName="OnError"
+      DTS:LocaleID="-1">
+      <DTS:Variables>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:Description="The propagate property of the event"
+          DTS:DTSID="{725C770D-FC8D-4213-935B-80F6243C2AD6}"
+          DTS:IncludeInDebugDump="6789"
+          DTS:Namespace="System"
+          DTS:ObjectName="Propagate">
+          <DTS:VariableValue
+            DTS:DataType="11">-1</DTS:VariableValue>
+        </DTS:Variable>
+      </DTS:Variables>
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package.EventHandlers[OnError]\Send Mail Task"
+          DTS:CreationName="Microsoft.SendMailTask"
+          DTS:Description="Send Mail Task"
+          DTS:DTSID="{b30b46c0-4e40-4bfc-8438-beaa9b99fd6d}"
+          DTS:ExecutableType="Microsoft.SendMailTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Send Mail Task">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SendMailTask:SendMailTaskData
+              SendMailTask:SMTPServer="{97B307DC-738F-4EDF-87C6-71EE1C7141A6}"
+              SendMailTask:From="LoadIntallProductStaging@hnicorp.com"
+              SendMailTask:To="jardml@hnicorp.com"
+              SendMailTask:Subject="Loading Installation Data into Staging table failed"
+              SendMailTask:MessageSource="Loading Installation Data into Staging table failed" xmlns:SendMailTask="www.microsoft.com/sqlserver/dts/tasks/sendmailtask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+    </DTS:EventHandler>
+  </DTS:EventHandlers>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="171,42"
+          Id="Package\CreateStagingTable"
+          TopLeft="327,11" />
+        <NodeLayout
+          Size="135,42"
+          Id="Package\LoadAllsteel"
+          TopLeft="344,123" />
+        <NodeLayout
+          Size="123,42"
+          Id="Package\LoadHON"
+          TopLeft="348,217" />
+        <NodeLayout
+          Size="132,42"
+          Id="Package\LoadMaxon"
+          TopLeft="338,319" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="412,53">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,70"
+              Start="0,0"
+              End="0,62.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,62.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="410.5,165">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,52"
+              Start="0,0"
+              End="0,44.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,44.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="406.75,259">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <DtsEventHandler
+    design-time-name="Package.EventHandlers[OnError]">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="150,42"
+          Id="Package.EventHandlers[OnError]\Send Mail Task"
+          TopLeft="223,111" />
+      </GraphLayout>
+    </LayoutInfo>
+  </DtsEventHandler>
+  <DtsEventHandler
+    design-time-name="Package\CreateStagingTable.EventHandlers[OnError]">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="150,42"
+          Id="Package\CreateStagingTable.EventHandlers[OnError]\Send Mail Task"
+          TopLeft="5.5,5.5" />
+      </GraphLayout>
+    </LayoutInfo>
+  </DtsEventHandler>
+  <TaskHost
+    design-time-name="Package\LoadAllsteel">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="164,42"
+          Id="Package\LoadAllsteel\Source - Sheet1$"
+          TopLeft="83.5,5.5" />
+        <NodeLayout
+          Size="331,42"
+          Id="Package\LoadAllsteel\Destination - InstructionSheetsToBeLoaded-Allsteel"
+          TopLeft="5.50000000000003,107.5" />
+        <EdgeLayout
+          Id="Package\LoadAllsteel.Paths[Excel Source Output]"
+          TopLeft="168.25,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <DtsEventHandler
+    design-time-name="Package\LoadAllsteel.EventHandlers[OnError]">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="150,42"
+          Id="Package\LoadAllsteel.EventHandlers[OnError]\Send Mail Task"
+          TopLeft="77,43" />
+      </GraphLayout>
+    </LayoutInfo>
+  </DtsEventHandler>
+  <PipelineComponentMetadata
+    design-time-name="Package\LoadAllsteel\Destination - InstructionSheetsToBeLoaded-Allsteel">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\LoadHON">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="160,42"
+          Id="Package\LoadHON\Source - Sheet1$"
+          TopLeft="79.5,5.5" />
+        <NodeLayout
+          Size="308,42"
+          Id="Package\LoadHON\Destination - InstructionSheetsToBeLoaded-HON"
+          TopLeft="5.50000000000003,107.5" />
+        <EdgeLayout
+          Id="Package\LoadHON.Paths[Excel Source Output]"
+          TopLeft="159.5,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <DtsEventHandler
+    design-time-name="Package\LoadHON.EventHandlers[OnError]">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="150,42"
+          Id="Package\LoadHON.EventHandlers[OnError]\Send Mail Task"
+          TopLeft="238,91" />
+      </GraphLayout>
+    </LayoutInfo>
+  </DtsEventHandler>
+  <PipelineComponentMetadata
+    design-time-name="Package\LoadHON\Destination - InstructionSheetsToBeLoaded-HON">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\LoadMaxon">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="244,42"
+          Id="Package\LoadMaxon\Source - 'Maxon Instructions CSV$'"
+          TopLeft="42,5.5" />
+        <NodeLayout
+          Size="317,42"
+          Id="Package\LoadMaxon\Destination - InstructionSheetsToBeLoaded-Maxon"
+          TopLeft="5.50000000000003,107.5" />
+        <EdgeLayout
+          Id="Package\LoadMaxon.Paths[Excel Source Output]"
+          TopLeft="164,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <DtsEventHandler
+    design-time-name="Package\LoadMaxon.EventHandlers[OnError]">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="150,42"
+          Id="Package\LoadMaxon.EventHandlers[OnError]\Send Mail Task"
+          TopLeft="267,110" />
+      </GraphLayout>
+    </LayoutInfo>
+  </DtsEventHandler>
+  <PipelineComponentMetadata
+    design-time-name="Package\LoadMaxon\Destination - InstructionSheetsToBeLoaded-Maxon">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
